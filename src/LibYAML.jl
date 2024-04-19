@@ -31,6 +31,10 @@ structure of `Vector`s, `Dict`s, and scalar values.
 """
 load_file(filename::AbstractString) = load(read(filename, String))
 
+struct ParserError <: Exception
+    message::String
+end
+
 function _parse_yaml_str(text::AbstractString)
     parser = Ref{C_API.yaml_parser_s}()
     event = Ref{C_API.yaml_event_s}()
@@ -49,7 +53,7 @@ end
 function _handle_events(parser, event, acc)
     while true
         C_API.yaml_parser_parse(parser, event) == 0 &&
-            throw(YAMLParserError("Failed to parse YAML"))
+            throw(ParserError("Failed to parse YAML"))
 
         type = event[].type
         if type == C_API.YAML_NO_EVENT
