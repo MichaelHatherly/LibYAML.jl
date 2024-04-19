@@ -4,8 +4,10 @@ authors = ["Erik Schnetter <schnetter@gmail.com>", "Michael Hatherly <michaelhat
 version = "0.1.1"
 
 [deps]
+CEnum = "fa961155-64e5-5f13-b03f-caf6b980ea82"
 LibYAML_jll = "f531010a-71ee-5b11-8e71-2f13f29d8a82"
 
 [compat]
+CEnum = "0.5"
 LibYAML_jll = "0.2.6"
 julia = "1.6"

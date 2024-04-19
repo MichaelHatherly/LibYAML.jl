@@ -1,0 +1,7 @@
+[general]
+library_name = "libyaml"
+output_file_path = "../src/libyaml_api.jl"
+use_deterministic_symbol = true
+
+[codegen]
+use_ccall_macro = true

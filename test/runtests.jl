@@ -2,5 +2,5 @@ using LibYAML
 using Test
 
 @testset "LibYAML" begin
-    # TODO: Add tests.
+    @test LibYAML.version() == v"0.2.5"
 end
