@@ -1,9 +1,11 @@
 name = "LibYAML"
 uuid = "893b89ae-d513-59bf-bb22-7f8468641907"
-authors = ["Erik Schnetter <schnetter@gmail.com>"]
+authors = ["Erik Schnetter <schnetter@gmail.com>", "Michael Hatherly <michaelhatherly@gmail.com>"]
 version = "0.1.1"
 
 [deps]
-BinaryProvider = "b99e7846-7c00-51b0-8f62-c81ae34c0232"
-Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+LibYAML_jll = "f531010a-71ee-5b11-8e71-2f13f29d8a82"
+
+[compat]
+LibYAML_jll = "0.2.6"
+julia = "1.6"
