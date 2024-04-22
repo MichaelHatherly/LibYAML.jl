@@ -1,6 +1,6 @@
 The MIT License (MIT) <https://opensource.org/licenses/MIT>
 
-Copyright (c) 2019 Erik Schnetter
+Copyright (c) 2019-2024 Erik Schnetter, Michael Hatherly, and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
