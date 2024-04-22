@@ -38,10 +38,14 @@ end
     @testset "yaml-test-suite" begin
         skipped = Set([
             # TODO: Skipped test cases.
+
+            # Non-unique keys, fails in C parsing rather than in tree construction.
             "2JQS.yaml",
             "2LFX.yaml",
             "2SXE.yaml",
+            "3HFZ.yaml",
             "4ABK.yaml",
+            "4H7K.yaml",
             "4MUZ.yaml",
             "58MP.yaml",
             "5MUD.yaml",
@@ -59,6 +63,7 @@ end
             "9SA2.yaml",
             "A2M4.yaml",
             "BEC7.yaml",
+            "BS4K.yaml",
             "CFD4.yaml",
             "CVW2.yaml",
             "DBG4.yaml",
@@ -71,6 +76,7 @@ end
             "HM87.yaml",
             "HWV9.yaml",
             "K3WX.yaml",
+            "KS4U.yaml",
             "M2N8.yaml",
             "M7A3.yaml",
             "MUS6.yaml",
@@ -79,6 +85,7 @@ end
             "NKF9.yaml",
             "Q5MG.yaml",
             "QB6E.yaml",
+            "QLJ7.yaml",
             "QT73.yaml",
             "R4YG.yaml",
             "RHX7.yaml",
@@ -93,7 +100,11 @@ end
             "W5VH.yaml",
             "X4QW.yaml",
             "Y79Y.yaml",
+
+            # Consistent with pyyaml.
             "YJV2.yaml",
+
+            # Valid according to spec, but parsers not encouraged to support.
             "ZYU8.yaml",
         ])
         currently_broken = Set([
@@ -106,7 +117,7 @@ end
             path = joinpath(root, file)
             if endswith(path, ".yaml")
                 @testset "$path" begin
-                    for document in LibYAML.load_file(path), value in document
+                    for document in LibYAML.load_file(path; all = true), value in document
                         fail = get(value, "fail", false)
                         yaml = sanitise_yaml(value["yaml"])
 
@@ -121,7 +132,7 @@ end
                         elseif file in skipped
                             @test_broken false
                         else
-                            if fail === false
+                            if fail === false || get(value, "json", "null") !== "null"
                                 LibYAML.load(yaml)
                             else
                                 @test_throws LibYAML.ParserError LibYAML.load(yaml)
